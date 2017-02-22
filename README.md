@@ -1,6 +1,6 @@
 # D3 Dynamic Tree
 
-This is an expansion of Mike Bostock’s [Collapsible Tree Block](https://bl.ocks.org/mbostock/4339083) that demonstrates how to dynamically add content to the tree as nodes are clicked.
+This is an expansion of Mike Bostock’s [Collapsible Tree Block](https://bl.ocks.org/mbostock/4339083) that demonstrates how to dynamically add content to the tree as nodes are expanded. There is a working example of this tree [here](https://fhightower.github.io/d3-dynamic-tree/).
 
 ![D3 Dynamic Tree](fig_1.png?raw=true "Dynamic, D3 Collapsible Tree")
 
