@@ -4,4 +4,4 @@ This is an expansion of Mike Bostock’s [Collapsible Tree Block](https://bl.ock
 
 ![D3 Dynamic Tree](fig_1.png?raw=true "Dynamic, D3 Collapsible Tree")
 
-Like the original, this is license under the [GNU General Public License, version 3](https://opensource.org/licenses/GPL-3.0) license.
+Like the original, this is licensed under the [GNU General Public License, version 3](https://opensource.org/licenses/GPL-3.0) license.
