@@ -16,29 +16,25 @@
 
 var DYNAMICTREE = DYNAMICTREE || {};
 
-DYNAMICTREE.treeJson = {};
-
-DYNAMICTREE.getInitialJson = function() {
-    /* . */
-    var initialJson = {
-        "name": "A",
-        "children": [{
-            "name": "B",
-        },
-        {
-            "name": "C",
-        },
-        {
-            "name": "D",
-        }],
-        "type": "Incident"
-    };
-
-    DYNAMICTREE.treeJson = initialJson;
+var initialJson = {
+    "name": "A",
+    "children": [{
+        "name": "B",
+    },
+    {
+        "name": "C",
+    },
+    {
+        "name": "D",
+    }],
+    "type": "Incident"
 };
 
-DYNAMICTREE.getAssociatedItems = function(node) {
-    // for each child of the node that was clicked, get associations and add them appropriately to the JSON
+// initialize the json for the tree
+DYNAMICTREE.treeJson = initialJson;
+
+DYNAMICTREE.getNewData = function(node) {
+    /* Return a list of things that will be added as children to the json. */
     return [{
         name: "E",
     }, {
@@ -50,20 +46,29 @@ DYNAMICTREE.updateJson = function(node) {
     /* Update the JSON to show new children nodes. */
     console.log("node id", node.id);
 
+    // Here is handy guide to how d3 works and how this code operates:
+    // `._children`: this represents the *invisible* children of a node
+    // `.children`: this represents the *visible* children of a node
+
+    // if the child has children that are not currently visible, add children to each of the currently invisible nodes
     if (node._children) {
         node._children.forEach(function(childNode) {
-            var associatedItems = DYNAMICTREE.getAssociatedItems(childNode);
+            var associatedItems = DYNAMICTREE.getNewData(childNode);
             childNode._children = associatedItems;
         });
-    } else {}
+    }
 
+    // if the node has visible children, make them invisible 
     if (node.children) {
         node._children = node.children;
         node.children = null;
-    } else {
+    }
+    // if the node has invisible children, make them visible
+    else {
         node.children = node._children;
         node._children = null;
     }
 
+    // update the view to reflect the new changes
     D3UTILITY.update(node);
 };
